@@ -1,0 +1,15 @@
+*.pyc
+*.debug
+
+session.shelve*
+
+.DS_Store
+
+/.vscode/settings.json
+
+/.env
+/.venv
+
+/dist
+/build
+/src/headless_api.egg-info
