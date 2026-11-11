@@ -1,0 +1,3 @@
+import headless
+
+def get_api() -> headless.API: ...
