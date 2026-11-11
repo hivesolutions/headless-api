@@ -147,7 +147,7 @@ class API(appier.API):
         return contents
 
     def info(self):
-        url = self.base_url + "info"
+        url = self.base_url.rstrip("/") + "/info"
         contents = self.get(url)
         return contents
 

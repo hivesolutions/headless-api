@@ -189,3 +189,15 @@ class BaseTest(unittest.TestCase):
         result = self.api.info()
         self.assertEqual(result, b"%PDF-1.4")
         self.assertEqual(self.requests, [("GET", "https://headless.hive.pt/info", {})])
+
+        # the route is appended to the base URL with a single slash, whether
+        # or not the base URL ends with one, keeping its path (if any)
+        for base_url, url in (
+            ("http://localhost:3000", "http://localhost:3000/info"),
+            ("http://localhost:3000/", "http://localhost:3000/info"),
+            ("https://hive.pt/headless", "https://hive.pt/headless/info"),
+            ("https://hive.pt/headless/", "https://hive.pt/headless/info"),
+        ):
+            api = headless.API(base_url=base_url)
+            api.get = lambda url, **kwargs: url
+            self.assertEqual(api.info(), url)
