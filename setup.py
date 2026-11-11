@@ -44,7 +44,7 @@ setuptools.setup(
     packages=["headless", "headless.test"],
     test_suite="headless.test",
     package_dir={"": os.path.normpath("src")},
-    package_data={"headless": ["*.pyi"]},
+    package_data={"headless": ["*.pyi", "py.typed"]},
     install_requires=["appier"],
     classifiers=[
         "Development Status :: 3 - Alpha",
